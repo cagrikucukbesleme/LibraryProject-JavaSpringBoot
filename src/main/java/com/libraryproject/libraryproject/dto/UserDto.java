@@ -1,12 +1,16 @@
 package com.libraryproject.libraryproject.dto;
 
-import com.libraryproject.libraryproject.entity.UserAccount;
-import lombok.Data;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class UserDto {
+
+
+public class UserDto implements Serializable {
 
     private Long id;
 
@@ -14,4 +18,6 @@ public class UserDto {
 
     private String lastname;
     private List<String> userAccounts;
+
+
 }

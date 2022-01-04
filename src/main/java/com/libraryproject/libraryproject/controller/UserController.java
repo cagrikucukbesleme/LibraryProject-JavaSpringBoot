@@ -1,5 +1,6 @@
 package com.libraryproject.libraryproject.controller;
 
+import com.libraryproject.libraryproject.dto.AccountDto;
 import com.libraryproject.libraryproject.dto.UserDto;
 
 import com.libraryproject.libraryproject.service.UserService;
@@ -19,6 +20,11 @@ public class UserController {
     public ResponseEntity<UserDto> saveData(@RequestBody UserDto userDto){
         return ResponseEntity.ok(userService.save(userDto));
     }
+
+//    @PostMapping("/account")
+//    public ResponseEntity<AccountDto> saveData(@RequestBody AccountDto accountDto){
+//        return ResponseEntity.ok(userService.save(accountDto));
+//    }
 
 
     @GetMapping

@@ -1,14 +1,15 @@
 package com.libraryproject.libraryproject.entity;
 import lombok.Data;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "kullanici")
+@Table(name = "users")
 @Data
 //veri tabaına erişilen katman. Dışarıya kapalı olan kısım
 //data anotation ile tüm setter, getter ve toString metodları otomatik oluşturur
-public class User {
+public class User implements Serializable {
     @Id
     @SequenceGenerator(name="user_seq_gen",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_gen")
@@ -22,4 +23,8 @@ public class User {
     @OneToMany
     @JoinColumn(name = "user_acoount_id")
     private List<UserAccount> userAccounts;
+
+
+
+
 }

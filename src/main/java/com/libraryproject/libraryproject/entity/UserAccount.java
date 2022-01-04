@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 //veri tabanı entity olacak
 @Entity
@@ -15,18 +16,21 @@ import java.io.Serializable;
 @EqualsAndHashCode(of = {"id"})
 @ToString
 public class UserAccount implements Serializable {
+
     @Id
     @SequenceGenerator(name="acoount_seq_gen",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "acoount_seq_gen")
     private Long id;
 
-    @Column(name = "adress")
-    private String adress;
-    @Enumerated
-    private AdressType adressType;
+    @Column(name = "userbooks")
+    private String userBooks;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "booktype",length = 30)
+    private BookType bookType;
 
 
-    @Column(name = "isUserActive")
+    @Column(name = "isuseractive")
     private Boolean isUserActive;
 
 
@@ -35,10 +39,24 @@ public class UserAccount implements Serializable {
     @JoinColumn(name = "user_acoount_id")
     private User user;
 
-    public enum AdressType{
-        HOME_ADRESS,
-        JOB_ADRESS,
-        OTHER
+    @OneToMany
+    @JoinColumn(name = "acoount_book_id")
+    private List<Books> books;
+
+    public enum BookType{
+
+        NOVEL("Novel"),
+        MYTH("Myth"),
+        HISTORY("History"),
+        POEMS("Poems"),
+        DRAMA("Drama"),
+        BIOGRAPHY("Biography");
+
+        private final  String bookType;
+
+        BookType(String bookType) {
+            this.bookType = bookType;
+        }
     }
 
 
