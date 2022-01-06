@@ -15,4 +15,6 @@ Book ve Author tabloları yaratıldı. API'lerde gerekli düzenlemeler yapıldı
 
 PUT, DELETE, UPDATE Http metodalrını ekledim ve ve arka planda gerçekleşmesi gereken işlemleri BookServiceImpl ve UserServiceImpl sınıfında metod fonk olarak tanımladım.
 
-Aspect Oriented Programming yapıldı. her işlem sonrasında konsola mesaj dönülmesi sağlandı.
+Aspect Oriented Programming yapıldı.
+aspects isminde package ve onun altında @Aspect'lerimi yazdığım ServiceAspect sınıfını oluşturdum. Gerekli metodaları tanımladım.
+her işlem sonrasında konsola mesaj dönülmesi sağlandı.
