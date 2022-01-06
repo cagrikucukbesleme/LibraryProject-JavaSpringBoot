@@ -30,10 +30,6 @@ public class UserAccount implements Serializable {
     private BookType bookType;
 
 
-    @Column(name = "isuseractive")
-    private Boolean isUserActive;
-
-
 
     @ManyToOne
     @JoinColumn(name = "user_acoount_id")

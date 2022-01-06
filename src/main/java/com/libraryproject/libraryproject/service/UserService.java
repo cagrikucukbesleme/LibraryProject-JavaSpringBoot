@@ -11,9 +11,11 @@ import java.util.List;
 public interface UserService {
 
     UserDto save(UserDto userDto);
+    UserDto updateData(UserDto userDto);
 //    AccountDto save(AccountDto accountDto);
     void delete(long id);
     List<UserDto>  getAll();
+    UserDto  getDataById(long id);
     Page<UserDto> getAll(Pageable pageable);
 
 

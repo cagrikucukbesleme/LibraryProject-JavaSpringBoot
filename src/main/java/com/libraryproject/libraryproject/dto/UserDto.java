@@ -17,6 +17,7 @@ public class UserDto implements Serializable {
     private String firstname;
 
     private String lastname;
+    private Boolean isUserActive;
     private List<String> userAccounts;
 
 

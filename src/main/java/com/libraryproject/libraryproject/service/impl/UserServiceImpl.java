@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 @Service
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
 
         user.setFirstname(userDto.getFirstname());
         user.setLastname(userDto.getLastname());
+        user.setIsUserActive(userDto.getIsUserActive());
         final User userDb = userRepository.save(user);
         List<UserAccount> list=new ArrayList<>();
         UserAccount userAccount=new UserAccount();
@@ -38,13 +40,28 @@ public class UserServiceImpl implements UserService {
             UserAccount userAccount1=new UserAccount();
             userAccount1.setUserBooks(item);
             //userAccount1.setBookType(Enum.valueOf(UserAccount.bookType.POEMS));
-            userAccount1.setIsUserActive(Boolean.getBoolean(item));
+//            userAccount1.setIsUserActive(Boolean.getBoolean(item));
             userAccount1.setUser(userDb);
             list.add(userAccount1);
         });
         accountRepository.saveAll(list);
         userDto.setId(userDb.getId());
         return userDto;
+    }
+
+    @Override
+    @Transactional
+    public UserDto updateData(UserDto userDto) {
+        User user=new User();
+
+        user=userRepository.getById(userDto.getId());
+        final  UserDto userDto1=new UserDto();
+        userDto1.setId(user.getId());
+        userDto1.setFirstname(user.getFirstname());
+        userDto1.setLastname(user.getLastname());
+        userDto1.setIsUserActive(user.getIsUserActive());
+
+        return userDto1;
     }
 
 //    @Override
@@ -60,10 +77,15 @@ public class UserServiceImpl implements UserService {
 //    }
 
     @Override
+    @Transactional
     public void delete(long id) {
+        User user=new User();
+        userRepository.deleteById(id);
+
     }
 
     @Override
+    @Transactional
     public List<UserDto> getAll() {
         List<User> users= userRepository.findAll();
         List<UserDto> userDtos=new ArrayList<>();
@@ -78,6 +100,17 @@ public class UserServiceImpl implements UserService {
             userDtos.add(userDto);
         });
         return userDtos;
+    }
+
+    @Override
+    @Transactional
+    public UserDto getDataById(long id) {
+        User user=new User();
+        UserDto userDto=new UserDto();
+        user=userRepository.getById(id);
+
+        userDto.setId(user.getId());
+        return userDto;
     }
 
 

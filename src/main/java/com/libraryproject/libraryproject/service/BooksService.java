@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface BooksService {
     BooksDto save(BooksDto booksDto);
-    void delete(Long id);
+    BooksDto updateBook(BooksDto booksDto);
+    void delete(long id);
     List<BooksDto> getAll();
+    BooksDto getBookById(long id);
     Page<BooksDto> getAll(Pageable pageable);
 }

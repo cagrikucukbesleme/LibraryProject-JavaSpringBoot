@@ -20,6 +20,9 @@ public class User implements Serializable {
     @Column(name = "lastname",length = 100)
     private String lastname;
 
+    @Column(name = "isuseractive")
+    private Boolean isUserActive;
+
     @OneToMany
     @JoinColumn(name = "user_acoount_id")
     private List<UserAccount> userAccounts;

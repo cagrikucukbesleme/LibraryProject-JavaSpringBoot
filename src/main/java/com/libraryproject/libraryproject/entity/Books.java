@@ -24,13 +24,14 @@ public class Books implements Serializable {
     @Column(name = "bookstype",length = 30)
     private Books.BooksType booksType;
 
+
     @ManyToOne
     @JoinColumn(name = "acoount_book_id")
     private UserAccount userAccounts;
 
     @ManyToOne
     @JoinColumn(name = "author_book_id")
-    private Authors authors;
+    private Authors authors_id;
 
 
 
