@@ -1,6 +1,7 @@
 package com.libraryproject.libraryproject.entity;
 
 import lombok.Data;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.io.Serializable;
